@@ -1,6 +1,7 @@
 package org.example.product.application.controllers.produto.create;
 
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.AllArgsConstructor;
 import org.example.product.adapters.controllers.ProdutoController;
 import org.example.product.application.controllers.produto.create.requests.ProdutoCreateRequest;
 import org.example.product.core.applications.produto.repositories.ProdutoRepositoryInterface;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("produtos")
 public class CreateProdutoController {
