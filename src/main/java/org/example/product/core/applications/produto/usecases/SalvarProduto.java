@@ -1,8 +1,10 @@
 package org.example.product.core.applications.produto.usecases;
 
-import com.fiaptech2024.fastfood.core.applications.produto.repositories.ProdutoRepositoryInterface;
-import com.fiaptech2024.fastfood.core.domain.produto.Produto;
-import com.fiaptech2024.fastfood.core.domain.produto.enums.TipoProduto;
+
+
+import org.example.product.core.applications.produto.repositories.ProdutoRepositoryInterface;
+import org.example.product.core.domain.produto.Produto;
+import org.example.product.core.domain.produto.enums.TipoProduto;
 
 import java.math.BigDecimal;
 import java.util.UUID;

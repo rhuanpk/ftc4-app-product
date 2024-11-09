@@ -1,6 +1,7 @@
 package org.example.product.core.applications.produto.usecases;
 
-import com.fiaptech2024.fastfood.core.applications.produto.repositories.ProdutoRepositoryInterface;
+
+import org.example.product.core.applications.produto.repositories.ProdutoRepositoryInterface;
 
 import java.util.UUID;
 
