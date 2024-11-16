@@ -1,8 +1,10 @@
-package org.example.product.application.controllers.produto.create;
+package org.example.product.application.controllers.produto.update;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.product.adapters.presenters.ProdutoPresenter;
+import org.example.product.application.controllers.produto.findTipoProduto.FindTipoProdutoProdutoController;
 import org.example.product.core.applications.produto.repositories.ProdutoRepositoryInterface;
+import org.example.product.core.applications.produto.usecases.AtualizarProduto;
 import org.example.product.core.domain.produto.Produto;
 import org.example.product.core.domain.produto.enums.TipoProduto;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,14 +22,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.mockito.Mockito.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mockStatic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @SpringBootTest
-class CreateProdutoControllerTest {
+class UpdateProdutoControllerTest {
 
     @Mock
     private ProdutoRepositoryInterface produtoRepositoryInterface;
@@ -37,30 +39,21 @@ class CreateProdutoControllerTest {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    void whenCreateProductThenReturn200() throws Exception {
+    void whenUpdateProductThenReturn204() throws Exception {
         Produto produto = new Produto(UUID.randomUUID(), "Produto 1", BigDecimal.TEN, TipoProduto.BEBIDA);
 
-        Map<String, Object> mockResponse = new HashMap<>();
-        mockResponse.put("id", produto.getId());
-        mockResponse.put("nome", produto.getNome());
-        mockResponse.put("preco", produto.getPreco());
-        mockResponse.put("tipo_produto", produto.getTipoProduto());
-
-        try (MockedStatic<ProdutoPresenter> mockedStatic = mockStatic(ProdutoPresenter.class)) {
-            mockedStatic.when(() -> ProdutoPresenter.toObject(any(Produto.class))).thenReturn(mockResponse);
-
-            mockMvc.perform(post("/produtos")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(produto)))
-                    .andExpect(status().isCreated());
-        }
+        mockMvc.perform(put("/produtos/{id}", produto.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(produto)))
+                .andExpect(status().isNoContent());
     }
-
+    
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        CreateProdutoController createProdutoController = new CreateProdutoController(produtoRepositoryInterface);
-        this.mockMvc = MockMvcBuilders.standaloneSetup(createProdutoController).build();
+        UpdateProdutoController updateProdutoController = new UpdateProdutoController(produtoRepositoryInterface);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(updateProdutoController).build();
 
     }
+
 }
