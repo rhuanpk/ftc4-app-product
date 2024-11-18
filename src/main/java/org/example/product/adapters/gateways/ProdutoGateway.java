@@ -20,8 +20,8 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ProdutoGateway implements ProdutoRepositoryInterface {
 
-    private final ProdutoRepository produtoRepository;
-    private final ModelMapper modelMapper;
+    private ProdutoRepository produtoRepository;
+    private ModelMapper modelMapper;
 
     @Override
     public Produto saveProduto(Produto produto) {
@@ -61,10 +61,7 @@ public class ProdutoGateway implements ProdutoRepositoryInterface {
     @Override
     public Produto getById(UUID id) {
         Optional<ProdutoEntity> produtoEntity = this.produtoRepository.findById(id);
-        if (produtoEntity.isEmpty()) {
-            return null;
-        }
-        return this.converterProdutoEntityParaProduto(produtoEntity.get());
+        return produtoEntity.map(this::converterProdutoEntityParaProduto).orElse(null);
     }
 
     public Produto converterProdutoEntityParaProduto(ProdutoEntity produtoEntity) {
