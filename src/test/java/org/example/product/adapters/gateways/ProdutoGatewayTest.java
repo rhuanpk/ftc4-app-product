@@ -1,6 +1,5 @@
 package org.example.product.adapters.gateways;
 
-import org.example.product.application.controllers.produto.create.CreateProdutoController;
 import org.example.product.application.driven.entities.produto.ProdutoEntity;
 import org.example.product.application.driven.repositories.produto.ProdutoRepository;
 import org.example.product.core.applications.exception.EntityNotFoundException;
@@ -8,15 +7,13 @@ import org.example.product.core.domain.produto.Produto;
 import org.example.product.core.domain.produto.enums.TipoProduto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,10 +21,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ActiveProfiles("test")
 @SpringBootTest
 class ProdutoGatewayTest {
 

@@ -4,6 +4,7 @@ import org.example.product.core.domain.produto.Produto;
 import org.example.product.core.domain.produto.enums.TipoProduto;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("test")
 @SpringBootTest
 public class ProdutoPresenterTest {
 
