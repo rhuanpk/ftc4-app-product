@@ -22,7 +22,7 @@ public class StepDefinition {
     private ResponseEntity<String> response;
     private MockMvc mockMvc;
     TestRestTemplate restTemplate = new TestRestTemplate();
-    String url = "http://localhost:8080/produtos";
+    String url = "http://a667981233b704083af07f2232f4a0db-134519073.us-east-1.elb.amazonaws.com:4000/produtos";
 
 
     @Dado("que tenho um produto válido")
