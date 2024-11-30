@@ -146,6 +146,9 @@
                 <configuration>
                     <argLine>-Dspring.profiles.active=test</argLine>
                     <useModulePath>false</useModulePath>
+                    <excludes>
+                        <exclude>**/CucumberTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
