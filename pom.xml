@@ -144,7 +144,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <argLine>-Dspring.profiles.active=test</argLine>
                     <useModulePath>false</useModulePath>
                     <excludes>
                         <exclude>**/CucumberTest.java</exclude>
