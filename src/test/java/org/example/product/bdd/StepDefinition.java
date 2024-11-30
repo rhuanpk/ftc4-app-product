@@ -3,16 +3,12 @@ package org.example.product.bdd;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
-
-import org.example.product.AppProductApplication;
 import org.example.product.application.controllers.produto.create.requests.ProdutoCreateRequest;
 import org.example.product.core.domain.produto.enums.TipoProduto;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
