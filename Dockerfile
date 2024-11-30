@@ -1,15 +1,8 @@
-# Usando a imagem oficial do MySQL na versão mais recente
-FROM mysql:latest
+FROM maven:3.9.6-sapmachine-21 AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
 
-# Definindo variáveis de ambiente para configurar o MySQL
-# Substitua "minha_senha_secreta" pela senha que deseja usar
-ENV MYSQL_ROOT_PASSWORD root
-ENV MYSQL_DATABASE db_client
-ENV MYSQL_USER root
-ENV MYSQL_PASSWORD root
-
-# Expondo a porta padrão do MySQL
-EXPOSE 3307
-
-# Comando para iniciar o MySQL
-CMD ["mysqld"]
+FROM openjdk:21
+COPY --from=build /home/app/target/app-product-0.0.1-SNAPSHOT.jar /usr/local/lib/app-product.jar
+CMD ["java", "-jar", "/usr/local/lib/app-product.jar"]
