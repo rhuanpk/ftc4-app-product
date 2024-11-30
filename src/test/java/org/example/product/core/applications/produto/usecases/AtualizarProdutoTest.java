@@ -10,10 +10,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@ActiveProfiles("test")
 @SpringBootTest
 class AtualizarProdutoTest {
 
